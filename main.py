@@ -59,12 +59,14 @@ def transition_function():
 
 
 def main() -> None:
-    global tape
+    global tape, current_symbol_idx
 
     # Converts into list and adds blank symbols
     tape = list(sys.argv[1])
     tape.insert(0, "")
-    tape.insert(-1, "")
+    tape.append("")
+    current_symbol_idx = 1 # To previne the code to read the first blank symbol
+
     while True:
         transition_function()
         if state == FINAL_STATE:
